@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Instalar o motor · Radar de Audiências</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#6B3A1F">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/app.css">
+  <style>
+    .guia { max-width: 760px; margin: 0 auto; padding-block: 28px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 18px; }
+    .guia-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .guia h1 { margin: 8px 0 4px; font: 400 clamp(28px, 4vw, 38px)/1.1 var(--fonte-display); text-wrap: balance; }
+    .guia > p { margin: 0; color: var(--tinta-2); max-width: 62ch; }
+    .passos { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 14px; counter-reset: passo; }
+    .passo { position: relative; padding: 18px 20px 18px 68px; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: var(--sombra); counter-increment: passo; animation: cartao .5s var(--ease) both; animation-delay: calc(var(--i, 0) * 70ms); }
+    .passo::before { content: counter(passo); position: absolute; left: 18px; top: 16px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--marca); color: var(--sobre-marca); font: 400 18px var(--fonte-display); }
+    .passo h2 { margin: 0 0 6px; font-size: 16px; }
+    .passo p { margin: 0; color: var(--tinta-2); font-size: 14.5px; }
+    .passo .acoes { margin-top: 12px; }
+    .trilha { display: inline-flex; flex-wrap: wrap; gap: 4px; align-items: center; font-weight: 700; color: var(--tinta); }
+    .trilha span { padding: 2px 8px; border-radius: 7px; background: var(--cartao-2); border: 1px solid var(--linha); font-size: 13px; }
+    code { font-family: var(--fonte-mono); font-size: 13px; padding: 1px 6px; border-radius: 6px; background: var(--marca-suave); color: var(--marca); }
+    .nota { padding: 14px 16px; border-radius: 14px; background: var(--ok-fundo); color: var(--tinta); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main class="guia">
+    <div class="guia-topo">
+      <span class="wordmark wordmark-topo" role="img" aria-label="Diferencial Soluções"></span>
+      <a class="botao botao-contorno botao-p" href="/">Abrir o painel</a>
+    </div>
+    <div>
+      <span class="rotulo">Radar de Audiências</span>
+      <h1>Instalar o motor da planilha</h1>
+    </div>
+    <p>Uma vez só, uns cinco minutos. Depois disso a planilha passa a ser conferida de hora em hora e o painel mostra as audiências reais.</p>
+
+    <ol class="passos">
+      <li class="passo" style="--i:0">
+        <h2>Abra o editor de scripts da planilha</h2>
+        <p>Na planilha <b>Radar de Audiências — Diferencial Soluções</b>: <span class="trilha"><span>Extensões</span>→<span>Apps Script</span></span></p>
+      </li>
+      <li class="passo" style="--i:1">
+        <h2>Cole o motor</h2>
+        <p>Apague tudo o que estiver em <code>Código.gs</code>, cole o motor e salve (<code>Ctrl + S</code>).</p>
+        <div class="acoes">
+          <button id="copiar" class="botao botao-primario" type="button">Copiar o código do motor</button>
+          <a class="botao botao-contorno" href="/assets/motor/Radar.gs.txt" target="_blank" rel="noopener">Ver o código</a>
+        </div>
+        <p id="copiado" aria-live="polite" style="margin-top:8px"></p>
+      </li>
+      <li class="passo" style="--i:2">
+        <h2>Rode a instalação</h2>
+        <p>No topo do editor escolha a função <code>instalarRadar</code> e clique em <b>Executar</b>. Autorize com a conta do escritório (se o Google avisar, clique em <b>Avançado → Acessar o projeto</b>). Aparece o menu <b>📡 Radar</b> na planilha.</p>
+      </li>
+      <li class="passo" style="--i:3">
+        <h2>Publique para o painel</h2>
+        <p><span class="trilha"><span>Implantar</span>→<span>Nova implantação</span>→<span>App da Web</span></span><br>Executar como: <b>Eu</b> · Quem pode acessar: <b>Qualquer pessoa</b> → <b>Implantar</b>. Copie a URL que termina em <code>/exec</code>.</p>
+      </li>
+      <li class="passo" style="--i:4">
+        <h2>Ligue o painel ao motor</h2>
+        <p>Na Vercel, no projeto <b>radar-audiencias</b>: <span class="trilha"><span>Settings</span>→<span>Environment Variables</span></span> → <code>RADAR_API_URL</code> = a URL do passo 4. Faça um novo deploy. A chave de integração já está configurada.</p>
+      </li>
+      <li class="passo" style="--i:5">
+        <h2>Teste</h2>
+        <p>Na planilha: <span class="trilha"><span>📡 Radar</span>→<span>Enviar aviso de teste</span></span>. O resumo chega pelo WhatsApp da Bruna (com o cenário do Make ligado) e por e-mail. Depois, abra o painel e entre com o PIN da aba <b>Configurações</b>.</p>
+      </li>
+    </ol>
+
+    <div class="nota">Tudo continua na planilha: as configurações ficam na aba <b>Configurações</b> e cada aviso enviado aparece no <b>Histórico de avisos</b>.</div>
+  </main>
+  <script>
+    document.getElementById('copiar').addEventListener('click', async function () {
+      var aviso = document.getElementById('copiado');
+      try {
+        var r = await fetch('/assets/motor/Radar.gs.txt', { cache: 'no-store' });
+        var texto = await r.text();
+        await navigator.clipboard.writeText(texto);
+        aviso.textContent = '✓ Código copiado (' + Math.round(texto.length / 1024) + ' KB). Agora é só colar no Apps Script.';
+      } catch (e) {
+        aviso.textContent = 'Não deu para copiar automaticamente. Use “Ver o código”, selecione tudo e copie.';
+      }
+    });
+  </script>
+</body>
+</html>

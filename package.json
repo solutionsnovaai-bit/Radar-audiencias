@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node apps-script/teste/simulador.js",
     "build:loader": "esbuild painel-src/loader3d.js --bundle --format=esm --minify --target=es2020 --outfile=web/assets/loader3d.js",
-    "dev": "npx serve web -l 4173"
+    "dev": "npx serve web -l 4173",
+    "build:motor": "cp apps-script/Radar.gs web/assets/motor/Radar.gs.txt"
   },
   "devDependencies": {
     "esbuild": "0.20.2",

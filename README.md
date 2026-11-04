@@ -35,6 +35,8 @@ flowchart LR
 ## Instalação (uma vez)
 
 ### 1. Motor na planilha
+> Guia ilustrado com botão para copiar o código: **/instalar** no próprio painel.
+
 1. Abra a planilha **Radar de Audiências — Diferencial Soluções** → **Extensões → Apps Script**.
 2. Apague o conteúdo de `Código.gs`, cole todo o `apps-script/Radar.gs` e salve.
 3. Escolha a função **`instalarRadar`** → **Executar** → autorize com a conta do escritório.

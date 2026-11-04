@@ -415,7 +415,7 @@ function pintarTopo() {
   const faixa = $('#faixa-demo');
   if (estado.modo === 'demo') {
     faixa.hidden = false;
-    faixa.innerHTML = `${ic('teste')}<span><b>Demonstração</b> · dados fictícios, nada é enviado. Ligado ao motor da planilha, o painel mostra as audiências reais do escritório.</span>`;
+    faixa.innerHTML = `${ic('teste')}<span><b>Demonstração</b> · dados fictícios, nada é enviado. Ligado ao motor da planilha, o painel mostra as audiências reais do escritório. <a href="/instalar">Como ligar o motor</a></span>`;
   } else if (d.config && d.config.modoTeste) {
     faixa.hidden = false;
     faixa.innerHTML = `${ic('teste')}<span><b>Modo teste ligado</b> · todo WhatsApp vai só para o número de teste. Desligue na aba Configurações da planilha quando os dados forem reais.</span>`;
@@ -424,6 +424,7 @@ function pintarTopo() {
   if (d.motor && d.motor.versao) info.push('motor ' + d.motor.versao);
   if (d.planilhaUrl) info.push(`<a href="${esc(d.planilhaUrl)}" target="_blank" rel="noopener">Abrir a planilha</a>`);
   if (estado.modo === 'real') info.push('<a href="#" data-sair>Sair</a>');
+  else info.push('<a href="/instalar">Instalar o motor</a>');
   $('#rodape-info').innerHTML = info.join(' · ');
 }
 

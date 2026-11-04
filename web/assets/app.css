@@ -262,6 +262,7 @@ body::before {
   transition: transform .15s var(--ease), background-color .2s, border-color .2s, box-shadow .2s;
 }
 .botao:active { transform: scale(.97); }
+a.botao { text-decoration: none; }
 .botao-primario { background: var(--marca); color: var(--sobre-marca); box-shadow: 0 8px 20px -10px color-mix(in srgb, var(--marca) 80%, transparent); }
 .botao-primario:hover { background: var(--marca-forte); }
 .botao-contorno { background: var(--cartao); border-color: var(--linha-forte); color: var(--tinta); }
